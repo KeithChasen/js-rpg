@@ -3,4 +3,6 @@ class GameScreen extends Screen {
 		super();
 		this.controls = new GameControls();
 	}
+
+	draw(c, ctx) {}
 }

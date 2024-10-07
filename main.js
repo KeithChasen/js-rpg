@@ -10,12 +10,14 @@ const application = new Application();
 application.switchScreen('menu');
 
 const animate = () => {
-	application.run();
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+	application.run(canvas, ctx);
 
 	requestAnimationFrame(animate);
 };
 
-// animate();
+animate();
 
 window.addEventListener('resize', () => {
 	canvas.width = window.innerWidth;

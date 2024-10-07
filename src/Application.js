@@ -13,7 +13,9 @@ class Application {
 		}
 	}
 
-	run() {
-		console.log(`Application run`);
+	run(c, ctx) {
+		// console.log(`Application run`);
+
+		this.screen.draw(c, ctx);
 	}
 }
