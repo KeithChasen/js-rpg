@@ -1,6 +1,7 @@
 class Screen {
-	constructor() {
+	constructor(app) {
 		this.controls = null;
+		this.app = app;
 	}
 
 	cleanUp() {
@@ -8,4 +9,8 @@ class Screen {
 			this.controls.cleanUp();
 		}
 	}
+
+	update() {}
+
+	draw() {}
 }

@@ -5,6 +5,7 @@ class MenuControls extends Controls {
 		this.controls = {
 			up: false,
 			down: false,
+			enter: false,
 		};
 
 		this.addListener('keydown', this.handleKeyDown);
@@ -15,6 +16,7 @@ class MenuControls extends Controls {
 		this.controls = {
 			up: false,
 			down: false,
+			enter: false,
 		};
 	}
 
@@ -26,6 +28,10 @@ class MenuControls extends Controls {
 		if (event.code === 'ArrowDown') {
 			this.controls.down = true;
 		}
+
+		if (event.code === 'Enter') {
+			this.controls.enter = true;
+		}
 	}
 
 	handleKeyUp(event) {
@@ -34,6 +40,10 @@ class MenuControls extends Controls {
 		}
 		if (event.key === 'ArrowDown' && this.controls.down) {
 			this.controls.down = false;
+		}
+
+		if (event.code === 'Enter') {
+			this.controls.enter = false;
 		}
 	}
 }

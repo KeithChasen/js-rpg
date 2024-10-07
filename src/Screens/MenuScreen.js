@@ -1,6 +1,6 @@
 class MenuScreen extends Screen {
-	constructor() {
-		super();
+	constructor(app) {
+		super(app);
 		this.controls = new MenuControls();
 
 		this.menus = [
@@ -23,6 +23,15 @@ class MenuScreen extends Screen {
 	}
 
 	update() {
+		if (this.controls.controls.enter) {
+			this.controls.dropControls();
+			const [activeIndex] = this.menus.filter(item => item.selected);
+			// new game
+			if (activeIndex.id === 0) {
+				this.app.switchScreen('game');
+			}
+		}
+
 		if (this.controls.controls.up) {
 			this.controls.dropControls();
 

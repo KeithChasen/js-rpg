@@ -4,17 +4,24 @@ class Application {
 	}
 
 	switchScreen(screen) {
+		if (this.screen && this.screen.cleanUp) {
+			this.screen.cleanUp();
+		}
+
 		if (screen === 'menu') {
-			this.screen = new MenuScreen();
+			this.screen = new MenuScreen(this);
 		}
 
 		if (screen === 'game') {
-			this.screen = new GameScreen();
+			this.screen = new GameScreen(this);
 		}
 	}
 
-	run(c, ctx) {
-		this.screen.update();
-		this.screen.draw(c, ctx);
+	update() {
+		this.screen && this.screen.update();
+	}
+
+	draw(c, ctx) {
+		this.screen && this.screen.draw(c, ctx);
 	}
 }
