@@ -5,39 +5,68 @@ class MenuScreen extends Screen {
 
 		this.menus = [
 			{
-				id: 1,
+				id: 0,
 				text: 'New Game',
 				selected: true,
 			},
 			{
-				id: 2,
+				id: 1,
 				text: 'Save Game',
 				selected: false,
 			},
 			{
-				id: 3,
+				id: 2,
 				text: 'Load Game',
 				selected: false,
 			},
 		];
 	}
 
-	draw(c, ctx) {
-		ctx.fillStyle = 'white';
+	update() {
+		if (this.controls.controls.up) {
+			this.controls.dropControls();
 
+			const [activeIndex] = this.menus.filter(item => item.selected);
+
+			const newActiveIndex =
+				activeIndex.id >= this.menus.length - 1 ? 0 : activeIndex.id + 1;
+
+			this.menus = this.menus.map((menu, id) => ({
+				...menu,
+				selected: id === newActiveIndex,
+			}));
+		}
+
+		if (this.controls.controls.down) {
+			this.controls.dropControls();
+
+			const [activeIndex] = this.menus.filter(item => item.selected);
+
+			const newActiveIndex =
+				activeIndex.id <= 0 ? this.menus.length - 1 : activeIndex.id - 1;
+
+			this.menus = this.menus.map((menu, id) => ({
+				...menu,
+				selected: id === newActiveIndex,
+			}));
+		}
+	}
+
+	draw(c, ctx) {
 		for (let i in this.menus) {
 			// todo: optimize it
 			// make it almost const:
 			// set it in constructor and make possible to change upon resize
 			const div =
-				this.menus[i].id === 1
+				this.menus[i].id === 0
 					? 6
-					: this.menus[i].id === 2
+					: this.menus[i].id === 1
 					? 2
-					: this.menus[i].id === 3
+					: this.menus[i].id === 2
 					? 3
 					: 6;
-			ctx.fillStyle = 'white';
+
+			ctx.fillStyle = this.menus[i].selected ? 'yellow' : 'white';
 
 			// start horizontal point: 1/4 of width
 			// start vertical point height/divider

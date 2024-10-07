@@ -4,5 +4,7 @@ class GameScreen extends Screen {
 		this.controls = new GameControls();
 	}
 
+	update() {}
+
 	draw(c, ctx) {}
 }

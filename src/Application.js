@@ -14,8 +14,7 @@ class Application {
 	}
 
 	run(c, ctx) {
-		// console.log(`Application run`);
-
+		this.screen.update();
 		this.screen.draw(c, ctx);
 	}
 }
