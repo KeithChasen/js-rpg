@@ -4,6 +4,8 @@ class Screen {
 		this.app = app;
 	}
 
+	init() {}
+
 	cleanUp() {
 		if (this.controls && this.controls.cleanUp) {
 			this.controls.cleanUp();

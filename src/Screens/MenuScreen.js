@@ -1,6 +1,9 @@
 class MenuScreen extends Screen {
 	constructor(app) {
 		super(app);
+	}
+
+	init() {
 		this.controls = new MenuControls();
 
 		this.menus = [

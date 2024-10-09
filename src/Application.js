@@ -15,6 +15,8 @@ class Application {
 		if (screen === 'game') {
 			this.screen = new GameScreen(this);
 		}
+
+		this.screen.init();
 	}
 
 	update() {
