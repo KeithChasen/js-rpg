@@ -16,7 +16,12 @@ class GameScreen extends Screen {
 		this.player = new Player({ x: 100, y: 100 });
 	}
 
-	update() {}
+	update() {
+		if (this.controls.controls.up) this.player.position.y -= 1;
+		if (this.controls.controls.down) this.player.position.y += 1;
+		if (this.controls.controls.left) this.player.position.x -= 1;
+		if (this.controls.controls.right) this.player.position.x += 1;
+	}
 
 	draw(c, ctx) {
 		ctx.fillStyle = 'white';
